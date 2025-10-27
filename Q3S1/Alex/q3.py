@@ -13,7 +13,7 @@ for i in range(11111,66667):
         list.append(i)
 
 for num in list:
-    if num % 25 == 0:
+    if "2" in str(num) and "5" in str(num):
         c=c+1
 
 p = c/len(list)
