@@ -27,15 +27,9 @@ for perm in permutations:
 
 x=min(pathlens)
 y=max(pathlens)  
-print("x (Min)=")
-print(min)
-print("y (Max)=")
-print(max)
-
 xy=x*y
 
-print("x*y=")
-print(xy)
+print(f"x*y={xy}")
 
 #===========================================#
 end = time.perf_counter()

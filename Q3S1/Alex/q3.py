@@ -16,7 +16,7 @@ for num in list:
     if "2" in str(num) and "5" in str(num):
         c=c+1
 
-p = c/len(list)
+p = c/7776
 
 print(f"{p:.3f}")
 #===========================================#
