@@ -20,4 +20,8 @@ for perm in permutations(options):
     if total == 2025:
         for i in range(6):
             print(f"Side {i + 1} is assigned: ", perm[i])
+        
+
         break
+
+#ans 325
