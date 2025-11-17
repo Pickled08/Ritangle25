@@ -5,6 +5,7 @@ start = time.perf_counter()
 #===========================================#
 
 count = 0
+countTotal = 0
 
 for h in range(0,100):
     for m in range(0,60):
@@ -29,10 +30,11 @@ for h in range(0,100):
 
             if sum == 2:
                 count = count + 1
-                print(hhmmss)
+            countTotal = countTotal + 1
 
 
 print(count)
+print(countTotal)
 
 #===========================================#
 end = time.perf_counter()
