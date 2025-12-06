@@ -1,4 +1,7 @@
 from itertools import permutations
+import time
+
+start = time.perf_counter()
 
 primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
@@ -51,9 +54,14 @@ for perms in PE:
     result = solve(equation)
 
     if float(result).is_integer():
-        print(result)
         count = count+1
 
     
 
 print(count/len(PE))
+
+
+end = time.perf_counter()
+# Convert to milliseconds
+elapsed_ms = (end - start) * 1000
+print(f"Execution time: {elapsed_ms:.3f} ms")
