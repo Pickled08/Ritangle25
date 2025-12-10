@@ -85,14 +85,14 @@ for index in startingpoints:
                     p = clicks
                     plist.append(p)
 
-        if q == 0:
+        if q == 0 and p != 0:
             if any(
                 x == 60 for x in get_triangle_angles(display[0], display[1], display[2])
             ):
                 q = clicks - p
                 qlist.append(q)
 
-        if r == 0:
+        if r == 0 and p != 0 and q != 0:
             a, b, c = display[:3]
             s = (a + b + c) / 2
             expr = s * (s - a) * (s - b) * (s - c)
