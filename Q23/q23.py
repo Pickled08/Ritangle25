@@ -6,3 +6,4 @@ permutations=set(permutations(word))
 
 for perm in permutations:
     print(perm)
+

@@ -15,4 +15,3 @@ listoftriples = []
 for x,y,z in genTriples(1000):
     listoftriples.append([x,y,z])
 
-print(listoftriples)
