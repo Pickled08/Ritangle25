@@ -17,6 +17,8 @@ cn3 = [296, 763, 155, 145, 168, 437, 733, 154, 141]
 numdis = []
 startingpoints = []
 plist = []
+qlist = []
+rlist = []
 
 
 def get_triangle_angles(a, b, c):
@@ -70,9 +72,10 @@ for index in startingpoints:
     clicks = 0
     p = 0
     q = 0
+    r = 0
     for i in numdis:
         display = numdis[(index + numdis.index(i)) % len(numdis)]
-        if p != 0:
+        if p == 0:
             if (
                 (display[0] ** 2 + display[1] ** 2 == display[2] ** 2)
                 or (display[1] ** 2 + display[2] ** 2 == display[0] ** 2)
@@ -82,12 +85,29 @@ for index in startingpoints:
                     p = clicks
                     plist.append(p)
 
-        if q != 0:
+        if q == 0:
             if any(
                 x == 60 for x in get_triangle_angles(display[0], display[1], display[2])
             ):
-                q = clicks - ps
+                q = clicks - p
+                qlist.append(q)
+
+        if r == 0:
+            a, b, c = display[:3]
+            s = (a + b + c) / 2
+            expr = s * (s - a) * (s - b) * (s - c)
+
+            if expr >= 0:
+                area = math.sqrt(expr)
+                if round(area, 5).is_integer():
+                    r = clicks - p - q
+                    rlist.append(r)
+                    print(area)
+            else:
+                continue
 
         clicks = clicks + 2
 
 print(plist)
+print(qlist)
+print(rlist)
