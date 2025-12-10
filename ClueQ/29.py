@@ -19,6 +19,7 @@ startingpoints = []
 plist = []
 qlist = []
 rlist = []
+slist = []
 
 
 def get_triangle_angles(a, b, c):
@@ -73,6 +74,7 @@ for index in startingpoints:
     p = 0
     q = 0
     r = 0
+    s=0
     for i in numdis:
         display = numdis[(index + numdis.index(i)) % len(numdis)]
         if p == 0:
@@ -94,20 +96,33 @@ for index in startingpoints:
 
         if r == 0 and p != 0 and q != 0:
             a, b, c = display[:3]
-            s = (a + b + c) / 2
-            expr = s * (s - a) * (s - b) * (s - c)
+            S = (a + b + c) / 2
+            expr = S * (S - a) * (S - b) * (S - c)
 
             if expr >= 0:
                 area = math.sqrt(expr)
                 if round(area, 5).is_integer():
                     r = clicks - p - q
                     rlist.append(r)
-                    print(area)
             else:
                 continue
+        if s==0 and r!=0 and p!=0 and q!=0:
+            string_num = str(display[0]) + str(display[1]) + str(display[2])
+            if string_num in ["102334155", "165580141", "267914296", "433494437", "701408733"]:
+                s=clicks -p -q -r
+                slist.append(s)
+            
 
         clicks = clicks + 2
 
-print(plist)
-print(qlist)
-print(rlist)
+products = []
+
+for i in range(len(plist)):
+    p = plist[i]
+    q = qlist[i]
+    r = rlist[i]
+    s = slist[i]
+    product = p * q * r * s
+    products.append(product)
+
+print(max(products))
