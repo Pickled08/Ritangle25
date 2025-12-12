@@ -11,7 +11,6 @@ fibonaccis_formatdis = [
 ]
 
 cn1 = [267, 851, 259, 433, 493, 165, 701, 102]
-cn1 = [102, 701, 165, 493, 433, 259, 851, 267]
 cn2 = [914, 494, 468, 460, 143, 150, 832, 580, 299, 334, 408]
 cn3 = [296, 763, 155, 145, 168, 437, 733, 154, 141]
 
@@ -44,13 +43,12 @@ def get_triangle_angles(a, b, c):
     return round(angle_A, 5), round(angle_B, 5), round(angle_C, 5)
 
 
+
 for i in range(0, 792):
     numdis.append([cn1[i % 8], cn2[i % 11], cn3[i % 9]])
 
 for ele in fibonaccis_formatdis:
     startingpoints.append(numdis.index(ele))
-
-print(startingpoints)
 
 for index in startingpoints:
     clicks = 0
@@ -58,26 +56,28 @@ for index in startingpoints:
     q = 0
     r = 0
     s=0
-    for i in numdis:
-        display = numdis[(index + numdis.index(i)) % len(numdis)]
-        if p == 0:
+    for i in range(0,792):
+        display = numdis[(index + i) % 792]
+        
+
+        if p==0 and q==0 and r==0 and s==0:
             if (
                 (display[0] ** 2 + display[1] ** 2 == display[2] ** 2)
                 or (display[1] ** 2 + display[2] ** 2 == display[0] ** 2)
                 or (display[2] ** 2 + display[0] ** 2 == display[1] ** 2)
             ):
-                if gcd(display[0], display[1], display[2]) == 1:
+                if gcd(gcd(display[0], display[1]), display[2]) == 1:
                     p = clicks
                     plist.append(p)
 
-        if q == 0 and p != 0:
+        if q == 0 and p != 0 and r==0 and s==0:
             if any(
                 x == 60 for x in get_triangle_angles(display[0], display[1], display[2])
             ):
                 q = clicks - p
                 qlist.append(q)
 
-        if r == 0 and p != 0 and q != 0:
+        if r == 0 and p != 0 and q != 0 and s==0:
             a, b, c = display[:3]
             S = (a + b + c) / 2
             expr = S * (S - a) * (S - b) * (S - c)
@@ -89,14 +89,21 @@ for index in startingpoints:
                     rlist.append(r)
             else:
                 continue
+            
         if s==0 and r!=0 and p!=0 and q!=0:
             string_num = str(display[0]) + str(display[1]) + str(display[2])
             if string_num in ["102334155", "165580141", "267914296", "433494437", "701408733"]:
                 s=clicks -p -q -r
                 slist.append(s)
-                break
-            
 
         clicks = clicks + 2
+        
+products = []
 
-print( plist, qlist, rlist, slist )
+
+for i in range(0,5):
+    product=plist[i]*qlist[i]*rlist[i]*slist[i]
+    products.append(product)
+
+print(min(products))
+    
