@@ -1,5 +1,4 @@
 from math import gcd, acos, degrees, sqrt
-import math
 
 fibonaccis = [102334155, 165580141, 267914296, 433494437, 701408733]
 fibonaccis_formatdis = [
