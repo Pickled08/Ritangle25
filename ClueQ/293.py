@@ -91,8 +91,4 @@ for index in startingpoints:
     slist.append(s)
 
 products = [plist[i] * qlist[i] * rlist[i] * slist[i] for i in range(len(plist))]
-print("plist =", plist)
-print("qlist =", qlist)
-print("rlist =", rlist)
-print("slist =", slist)
 print("min product =", min(products))
